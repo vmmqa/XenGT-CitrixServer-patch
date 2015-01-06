@@ -1,3 +1,6 @@
 Xen:
 2014Q4-xen-from-4e8e0bd-to-fecb743 based on release/2014Q4
+2014Q4-qemu-from-6d6c9f5-to-0280685.patch based on release/2014Q4 same as 2014Q3
+2014Q4-kernel-from-4a3d327-to-b44ed6d.patch based on release/2014Q4, based on drm-intel-nightly
+
 
