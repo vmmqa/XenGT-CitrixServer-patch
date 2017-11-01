@@ -5,16 +5,20 @@
 
  #define ERR_EXIT(msg) do { perror(msg); exit(1); } while(0)
 
- int main() {
+ int main(int argc, char **argv) {
    int sockfd, ret;
      struct sockaddr_in servaddr;
        struct sockaddr_in cliaddr;
          socklen_t cliaddrlen;
-
+        
+          //  for(int i=0;i<argc;i++){
+          //      printf("arg%d=%s\n",i,argv[i]);}
            // 目标网络进程的套接字地址
              servaddr.sin_family = AF_INET;
-               servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
-                 servaddr.sin_port = htons(8080);
+               //servaddr.sin_addr.s_addr = inet_addr("127.0.0.1");
+               //  servaddr.sin_port = htons(atoi("8080"));
+               servaddr.sin_addr.s_addr = inet_addr(argv[1]);
+                 servaddr.sin_port = htons(atoi(argv[2]));
 
                    // 创建 socket
                      sockfd = socket(AF_INET, SOCK_STREAM, 0); 
