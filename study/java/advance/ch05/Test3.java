@@ -28,6 +28,7 @@ class Reservoir {
     {
         if(this.total > 0) {
             this.total = this.total - 1;
+            System.out.println("total="+this.total);
             return true; // successfully sell one
         }
         else {

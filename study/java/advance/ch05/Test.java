@@ -26,9 +26,9 @@ class NewThread extends Thread {
     /**
      * convert object to string
      */
- //   public String toString() {
- //       return super.getName();
- //   }
+    public String toString() {
+        return super.getName();
+    }
 
     /**
      * what does the thread do?

@@ -1,17 +1,3 @@
-public class Test
-{
-    public static void main(String[] args)
-    {
-        Human aPerson = new Human();
-        Class c1      = aPerson.getClass();
-        System.out.println(c1.getName());
-
-        Human anotherPerson = new Woman();
-        Class c2      = anotherPerson.getClass();
-        System.out.println(c2.getName());  
-    }
-}
-
 class Human
 {    
     /**
@@ -45,3 +31,23 @@ class Woman extends Human
     }
 
 }
+public class Test
+{
+    public static void main(String[] args) throws Exception
+    {
+        Human aPerson = new Human();
+        Class c1      = aPerson.getClass();
+        System.out.println(c1.getName());
+
+        Human anotherPerson = new Woman();
+        Class c2      = anotherPerson.getClass();
+        System.out.println(c2.getName());  
+
+        Class c3      = Class.forName("Human");
+        System.out.println(c3.getName());
+
+        Class c4      = Woman.class;
+        System.out.println(c4.getName());  
+    }
+}
+

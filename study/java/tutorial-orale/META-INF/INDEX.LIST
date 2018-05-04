@@ -1,0 +1,8 @@
+JarIndex-Version: 1.0
+
+mygame.jar
+mygame
+mygame/client
+mygame/shared
+mygame/server
+
