@@ -1,0 +1,461 @@
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|
+tosca_definitions_version: tosca_simple_yaml_1_0
+imports:
+- nodes:
+   file: nodes.yml
+- datatypes:
+   file: data.yml
+- capabilities:
+   file: capabilities.yml
+- relationships:
+   file: relationships.yml
+- groups:
+   file: groups.yml
+- policies:
+   file: policies.yml
+
+node_types:   
+  org.openecomp.resource.vf.Fdnt:
+    derived_from: tosca.nodes.Root
+    properties:
+     nf_role: 
+       type: string
+     nf_function:
+       type: string
+     nf_naming_code:
+       type: string
+       default: nf_code
+     nf_type:
+       type: string 
+       default: FW
+     nf_naming:
+      type: org.openecomp.datatypes.Naming
+     availability_zone_max_count: 
+       type: string      
+       default: 1 
+     min_instances:
+       type: integer
+       default: 1
+     max_instances:
+       type: integer
+       default: 1
+       
+     int_fw_dns_trusted_interface_type:
+       type: string
+       default: left
+       description: service_interface_type for ServiceInstance
+     internet_dns_direct_subnet_id:
+       type: string
+       description: Subnet UUID for InstanceIp
+       default: defaultString
+     dnt_fw_srv_grp_id:
+       type: string
+       description: uuid of the server group
+       default: defaultString
+     dnt_fw_sec_grp_id:
+       type: string
+       description: uuid of the security group
+       default: defaultString
+     core_direct_subnet_id:
+       type: string
+       description: Subnet UUID for InstanceIp
+       default: defaultString
+     int_fw_dns_trusted_subnet_v6_id:
+       type: string
+       description: Subnet UUID for InstanceIp
+       default: defaultString
+     dnt_fw_si_ha_mode:
+       type: string
+       default: active-active
+       description: ha_mode for the ServiceInstance
+     core_direct_subnet_v6_id:
+       type: string
+       description: Subnet UUID for InstanceIp
+       default: defaultString
+     dnt_fw_flavor_name:
+       type: string
+       default: nv.c8r16d200
+       description: flavor for the ServiceInstance VM
+     core_direct_net_name:
+       type: string
+       default: core_direct_net_1
+       description: name for the VirtualNetwork
+     dnt_fw_st_type:
+       type: string
+       default: firewall
+       description: service_type for the ServiceTemplate
+     int_fw_dns_trusted_subnet_id:
+       type: string
+       description: Subnet UUID for InstanceIp
+       default: defaultString
+     dnt_fw_domain:
+       type: string
+       default: default-domain
+       description: domain for the ServiceTemplate
+     dnt_fw_names:
+       type: list
+       description: Comma Delimited List of Names for ServiceInstance  VMs
+       entry_schema:
+         type: string
+       default: [defaultList]
+     oam_protected_interface_type:
+       type: string
+       default: management
+       description: service_interface_type for ServiceInstance
+     core_direct_net_fqdn:
+       type: string
+       description: name for the VirtualNetwork
+       default: defaultString
+     int_fw_dns_trusted_family_v6:
+       type: string
+       default: v6
+       description: IP Family Address for InstanceIp
+     dnt_fw_image_name:
+       type: string
+       default: F5_BIGIP_12.1HF1.qcow2
+       description: image_name for the ServiceInstance VM
+     dnt_fw_shc_enabled:
+       type: boolean
+       default: true
+       description: enabled for the ServiceHealthCheck
+     dnt_fw_hrg_vmsi_count_1:
+       type: float
+       description: Iteration Count of Child Template for  Heat::ResourceGroup
+       default: 2.0
+     dnt_fw_st_mode:
+       type: string
+       default: in-network-nat
+       description: service_mode for the ServiceTemplate
+     dnt_fw_oam_protected_ips:
+       type: list
+       description: the ips of the management network
+       entry_schema:
+        type: string
+       default: [defaultList]
+     core_direct_interface_type:
+       type: string
+       default: other
+       description: service_interface_type for ServiceInstance
+     dnt_fw_st_version:
+       type: float
+       default: 2.0
+       description: version for the ServiceTemplate
+     vf_module_id:
+       type: string
+       description: Unique ID for this VF Module instance
+       default: defaultString
+     nimbus_hsl_interface_type:
+       type: string
+       default: other
+       description: service_interface_type for ServiceInstance
+     dnt_fw_ntp_gateway:
+       type: string
+       description: Gateway IP for NTP
+       default: defaultString
+     core_direct_family_v6:
+       type: string
+       default: v6
+       description: IP Family Address for InstanceIp
+     dnt_fw_shc_monitor_type:
+       type: string
+       default: HTTP
+       description: monitor_type for the ServiceHealthCheck
+     vnf_name:
+       type: string
+       description: Unique name for this VF instance
+       default: defaultString
+     internet_dns_direct_subnet_v6_id:
+       type: string
+       description: Subnet UUID for InstanceIp
+       default: defaultString
+     dnt_fw_st_virtualization_type:
+       type: string
+       default: virtual-machine
+       description: service_virtualization_type for the  ServiceTemplate
+     internet_dns_direct_interface_type:
+       type: string
+       default: right
+       description: service_interface_type for ServiceInstance
+     dnt_fw_admin_password:
+       type: string
+       default: Juniper321!
+       description: Password used to perform image import services
+     vnf_id:
+       type: string
+       description: Unique ID for this VF instance
+       default: defaultString
+     internet_dns_direct_family_v6:
+       type: string
+       default: v6
+       description: IP Family Address for InstanceIp
+     dnt_fw_shc_url_path:
+       type: string
+       default: local-ip
+       description: url_path for the ServiceHealthCheck
+     availability_zone_0:
+       type: string
+       description: availability_zone for the ServiceInstance
+       default: defaultString
+     nimbus_hsl_net_fqdn:
+       type: string
+       description: fq_name for the VirtualNetwork
+       default: defaultString
+     nimbus_hsl_net_name:
+       type: string
+       default: nimbus_hsl_net_1
+       description: name for the VirtualNetwork
+     int_fw_dns_trusted_net_fqdn:
+       type: string
+       description: fq_name for the VirtualNetwork
+       default: defaultString
+     dnt_fw_root_password:
+       type: string 
+       default: Juniper321!
+       description: Password used to perform image import services
+     dnt_fw_si_name_fqdn:
+       type: string
+       description: fq_name for the ServiceInstance in PortTuple  Resource
+       default: defaultString
+     oam_protected_net_fqdn:
+       type: string
+       description: fq_name for the VirtualNetwork
+       default: defaultString
+     dnt_fw_shc_max_retries:
+       type: float
+       default: 2.0
+       description: max_retries for the ServiceHealthCheck
+     dnt_fw_shc_timeout:
+       type: float
+       default: 5.0
+       description: timeout for the ServiceHealthCheck
+     internet_dns_direct_net_fqdn:
+       type: string
+       description: fq_name for the VirtualNetwork
+       default: defaultString
+     internet_dns_direct_net_name:
+       type: string
+       default: nimbus_internet_dns_direct_net_1
+       description: name for the VirtualNetwork
+     int_fw_dns_trusted_net_name:
+       type: string
+       default: nimbus_int_fw_dns_trusted_net_1
+       description: name for the VirtualNetwork
+     dnt_fw_shc_delay:
+       type: float
+       default: 3.0
+       description: delay for the ServiceHealthCheck
+     fdnt_index:
+       type: float
+       description: index of the FDNT VM
+       default: 1.0
+
+
+    capabilities:
+      DNT_FW_RHRG.binding_DNT_FW_INT_DNS_TRUSTED_RVMI:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 0
+        - UNBOUNDED
+        valid_source_types:
+        - org.openecomp.resource.cp.nodes.heat.network.contrailV2.VLANSubInterface
+      DNT_FW_RHRG.os_DNT_FW_SERVER:
+        type: tosca.capabilities.OperatingSystem
+        occurrences:
+        - 1
+        - UNBOUNDED
+        properties:
+          type:
+            type: string
+            required: false
+          distribution:
+            type: string
+            required: false
+          version:
+            type: version
+            required: false
+          architecture:
+            type: string
+            required: false
+      DNT_FW_RHRG.binding_DNT_FW_NIMBUS_HSL_RVMI:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 0
+        - UNBOUNDED
+        valid_source_types:
+        - org.openecomp.resource.cp.nodes.heat.network.contrailV2.VLANSubInterface
+      DNT_FW_RHRG.scalable_DNT_FW_SERVER:
+        type: tosca.capabilities.Scalable
+        occurrences:
+        - 1
+        - UNBOUNDED
+        properties:
+          max_instances:
+            type: integer
+            default: 1
+          min_instances:
+            type: integer
+            default: 1
+          default_instances:
+            type: integer
+      DNT_FW_RHRG.endpoint_DNT_FW_SERVER:
+        type: tosca.capabilities.Endpoint.Admin
+        occurrences:
+        - 1
+        - UNBOUNDED
+        properties:
+          port_name:
+            type: string
+            required: false
+          protocol:
+            type: string
+            default: tcp
+          port:
+            type: PortDef
+            required: false
+          initiator:
+            type: string
+            default: source
+          network_name:
+            type: string
+            default: PRIVATE
+            required: false
+          secure:
+            type: boolean
+            default: true
+          ports:
+            type: map
+            required: false
+            entry_schema:
+              type: PortSpec
+          url_path:
+            type: string
+            required: false
+      DNT_FW_RHRG.binding_DNT_FW_OAM_PROTECTED_RVMI:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 0
+        - UNBOUNDED
+        valid_source_types:
+        - org.openecomp.resource.cp.nodes.heat.network.contrailV2.VLANSubInterface
+      DNT_FW_RHRG.binding_DNT_FW_CORE_DIRECT_RVMI:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 0
+        - UNBOUNDED
+        valid_source_types:
+        - org.openecomp.resource.cp.nodes.heat.network.contrailV2.VLANSubInterface
+      DNT_FW_RHRG.binding_DNT_FW_SERVER:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 1
+        - UNBOUNDED
+      DNT_FW_RSG_SI_1.feature:
+        type: tosca.capabilities.Node
+        occurrences:
+        - 1
+        - UNBOUNDED
+      DNT_FW_RHRG.host_DNT_FW_SERVER:
+        type: tosca.capabilities.Container
+        occurrences:
+        - 1
+        - UNBOUNDED
+        valid_source_types:
+        - tosca.nodes.SoftwareComponent
+        properties:
+          num_cpus:
+            type: integer
+            required: false
+          disk_size:
+            type: scalar-unit.size
+            required: false
+          cpu_frequency:
+            type: scalar-unit.frequency
+            required: false
+          mem_size:
+            type: scalar-unit.size
+            required: false
+      DNT_FW_RHRG.feature:
+        type: tosca.capabilities.Node
+        occurrences:
+        - 1
+        - UNBOUNDED
+      DNT_FW_RHRG.binding_DNT_FW_INTERNET_DNS_DIRECT_RVMI:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 0
+        - UNBOUNDED
+        valid_source_types:
+        - org.openecomp.resource.cp.nodes.heat.network.contrailV2.VLANSubInterface
+    requirements:
+    - DNT_FW_RSG_SI_1.dependency:
+        occurrences:
+        - 0
+        - UNBOUNDED
+        capability: tosca.capabilities.Node
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.DependsOn
+    - DNT_FW_RHRG.dependency:
+        occurrences:
+        - 0
+        - UNBOUNDED
+        capability: tosca.capabilities.Node
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.DependsOn
+    - DNT_FW_RHRG.link_DNT_FW_INTERNET_DNS_DIRECT_RVMI:
+        occurrences:
+        - 1
+        - 1
+        capability: tosca.capabilities.network.Linkable
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.network.LinksTo
+    - DNT_FW_RHRG.link_DNT_FW_CORE_DIRECT_RVMI:
+        occurrences:
+        - 1
+        - 1
+        capability: tosca.capabilities.network.Linkable
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.network.LinksTo
+    - DNT_FW_RHRG.link_DNT_FW_OAM_PROTECTED_RVMI:
+        occurrences:
+        - 1
+        - 1
+        capability: tosca.capabilities.network.Linkable
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.network.LinksTo
+    - DNT_FW_RHRG.link_DNT_FW_INT_DNS_TRUSTED_RVMI:
+        occurrences:
+        - 1
+        - 1
+        capability: tosca.capabilities.network.Linkable
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.network.LinksTo
+    - DNT_FW_RHRG.link_DNT_FW_NIMBUS_HSL_RVMI:
+        occurrences:
+        - 1
+        - 1
+        capability: tosca.capabilities.network.Linkable
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.network.LinksTo
+    - DNT_FW_RSG_SI_1.port:
+        occurrences:
+        - 0
+        - UNBOUNDED
+        capability: tosca.capabilities.Attachment
+        node: org.openecomp.resource.cp.nodes.heat.network.neutron.Port
+        relationship: org.openecomp.relationships.AttachesTo
+    - DNT_FW_RHRG.local_storage_DNT_FW_SERVER:
+        occurrences:
+        - 0
+        - UNBOUNDED
+        capability: tosca.capabilities.Attachment
+        node: tosca.nodes.BlockStorage
+        relationship: tosca.relationships.AttachesTo
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|

@@ -1,0 +1,266 @@
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|
+tosca_definitions_version: tosca_simple_yaml_1_0
+metadata:
+    invariantUUID: 78c72999-1003-4a35-8534-bbd7d96fcae3
+    UUID: edd0a9f7-d084-4423-8461-a2eff4cb3eb6
+    name: Service FDNT
+    description: Service FDNT
+    type: Service
+    category: Network L1-3
+    ecompGeneratedNaming: true
+    namingPolicy: test
+    serviceEcompNaming: true
+
+imports:
+- nodes:
+   file: nodes.yml
+- datatypes:
+   file: data.yml
+- capabilities:
+   file: capabilities.yml
+- relationships:
+   file: relationships.yml
+- groups:
+   file: groups.yml
+- policies:
+   file: policies.yml
+- FDNT-interface:
+   file: resource-Fdnt-template-interface.yml
+- Service FDNT-interface:
+    file: service-ServiceFdnt-template-interface.yml
+- FDNT:
+    file: resource-Fdnt-template.yml
+- Contrail Route-interface:
+    file: resource-ContrailRoute-template-interface.yml
+- Contrail Route:
+    file: resource-ContrailRoute-template.yml
+- Testf:
+    file: resource-FdntNodesHeatModVmsiDntFwChild-template.yml
+- Testff:
+    file: resource-AllottedResource-template.yml
+
+topology_template:
+  inputs:
+      service_naming:
+         description: service naming
+         type: string
+         status: supported
+         default: test service naming
+         required: false
+
+  node_templates:
+    FDNT 1:
+      type: org.openecomp.resource.vf.Fdnt
+      metadata:
+        invariantUUID: e8edfda2-a9d2-422d-a49c-32cad3d19d5a
+        UUID: 8eb949d6-9635-426c-9f70-7edb4c1d5cc8
+        customizationUUID: 56179cd8-de4a-4c38-919b-bbc4452d2d73
+        version: '1.0'
+        name: FDNT
+        description: new VSP description
+        type: VF
+        resourceVendor: ciLicense2a511793
+        resourceVendorRelease: '1.0'
+        category: Generic
+        subcategory: Database
+      properties:
+        nf_naming:
+          ecomp_generated_naming: true
+          naming_policy: FDNT_instance_VF_2
+        nf_type: some nf type         
+        nf_role: some nf role
+        nf_function: some nf funcion
+        nf_naming_code: some code
+        availability_zone_max_count: 2
+        min_instances: 1
+        max_instances: 3
+  
+    Allotted resource Contrail Route 1:
+      type: org.openecomp.resource.vf.ContrailRoute
+      metadata:
+        invariantUUID: 6bcdf160-591e-4070-ae17-dad62d978159
+        UUID: a0b1ceae-c6f1-4340-9deb-925c299f138b
+        customizationUUID: fba0b775-469e-4f21-9b3f-46ad322b89db
+        version: '0.4'
+        name: Contrail Route
+        description: Contrail Route
+        type: VF
+        category: Allotted Resource
+        subcategory: Contrail Route
+      properties:
+        providing_service_invariant_uuid: '12345645'
+        providing_service_uuid: '456476'
+        providing_service_name: '12412414'
+        target_network_role: 'sample_target_role'
+        nf_type: 'sample_type'         
+        nf_role: 'sample_role'
+        nf_naming_code: 'sample_naming_code'
+#        vnf_naming:
+        availability_zone_max_count: 'sample'
+        min_instances: 1
+        max_instances: 2
+        
+    exVL:
+      type: org.openecomp.resource.vl.extVL
+      metadata:
+        invariantUUID: e8edfda2-a9d2-422d-a49c-32cad3d19d5b
+        UUID: 8eb949d6-9635-426c-9f70-7edb4c1d5ccb
+        customizationUUID: 56179cd8-de4a-4c38-919b-bbc4452d2d7b
+        version: '1.0'
+        name: ExtVL
+        description: ECOMP generic virtual link (network) base type for all other service-level and global networks
+        type: VL
+        resourceVendor: ciLicense2a511793
+        resourceVendorRelease: '1.0'
+        category: Generic
+        subcategory: Network Elements
+      properties:
+        network_role: ServiceFdnt.OAM
+        network_assignments:
+          is_external_network: false
+          is_shared_network: false
+          ipv4_subnet_default_assignment:
+            cidr_mask: 24
+            dhcp_enabled: true
+            ip_version: 4
+            min_subnets_count: 1
+            use_ipv4: true
+            ip_network_address_plan: AIC_ATM_UNPROTECTED_V4
+          ecomp_generated_network_assignment: false
+          ipv6_subnet_default_assignment:
+            dhcp_enabled: false
+            cidr_mask: 64
+            use_ipv6: false
+            ip_version: 6
+            min_subnets_count: 1
+            ip_network_address_plan: test
+        network_flows:
+          is_network_policy: false
+          is_bound_to_vpn: true
+          vpn_binding: 7a6520b-9982354-ee82992c-105720
+          network_policy: policy
+        network_scope: GLOBAL
+        network_type: Network type
+        provider_network:
+          is_provider_network: false
+        network_technology: Network technology
+     
+
+  groups:
+    fdnt1..Fdnt..base_stsi_dnt_frwl..module-0:
+      type: org.openecomp.groups.VfModule
+      metadata:
+        vfModuleModelName: Fdnt..base_stsi_dnt_frwl..module-0
+        vfModuleModelInvariantUUID: 6ee87d26-266f-4669-9d7d-9324802c24c9
+        vfModuleModelUUID: e99b85bc-5f07-480a-bbf0-d5880a12469e
+        vfModuleModelVersion: '1'
+        vfModuleModelCustomizationUUID: b458f4ef-ede2-403d-9605-d08c9398b6ee
+      properties:
+        min_vf_module_instances: 1
+        vf_module_label: base_stsi_dnt_frwl
+        max_vf_module_instances: 1
+        vf_module_type: Base
+        vf_module_description:
+        initial_count: 1
+        volume_group: false
+    fdnt1..Fdnt..mod_vmsi_dnt_fw_parent..module-1:
+      type: org.openecomp.groups.VfModule
+      metadata:
+        vfModuleModelName: Fdnt..mod_vmsi_dnt_fw_parent..module-1
+        vfModuleModelInvariantUUID: 3816617b-46e4-4401-9f63-99d5eea7b3e3
+        vfModuleModelUUID: d8ccab86-4a1f-49f6-b150-9ee83a9e4ace
+        vfModuleModelVersion: '1'
+        vfModuleModelCustomizationUUID: d5b21eb1-1136-49a6-95b8-3466a9768bad
+      properties:
+        min_vf_module_instances: 0
+        vf_module_label: mod_vmsi_dnt_fw_parent
+        max_vf_module_instances:
+        vf_module_type: Expansion
+        vf_module_description:
+        volume_group: false
+        initial_count: 0
+  substitution_mappings:
+    node_type: org.openecomp.service.ServiceFdnt
+    capabilities:
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_INT_DNS_TRUSTED_RVMI:
+      - FDNT 1
+      - dnt_fw_rhrg.binding_DNT_FW_INT_DNS_TRUSTED_RVMI
+      fdnt1.dnt_fw_rhrg.host_DNT_FW_SERVER:
+      - FDNT 1
+      - dnt_fw_rhrg.host_DNT_FW_SERVER
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_CORE_DIRECT_RVMI:
+      - FDNT 1
+      - dnt_fw_rhrg.binding_DNT_FW_CORE_DIRECT_RVMI
+      fdnt1.dnt_fw_rhrg.scalable_DNT_FW_SERVER:
+      - FDNT 1
+      - dnt_fw_rhrg.scalable_DNT_FW_SERVER
+      fdnt1.dnt_fw_rhrg.endpoint_DNT_FW_SERVER:
+      - FDNT 1
+      - dnt_fw_rhrg.endpoint_DNT_FW_SERVER
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_INTERNET_DNS_DIRECT_RVMI:
+      - FDNT 1
+      - dnt_fw_rhrg.binding_DNT_FW_INTERNET_DNS_DIRECT_RVMI
+      fdnt1.dnt_fw_rhrg.os_DNT_FW_SERVER:
+      - FDNT 1
+      - dnt_fw_rhrg.os_DNT_FW_SERVER
+      fdnt1.dnt_fw_rhrg.feature:
+      - FDNT 1
+      - dnt_fw_rhrg.feature
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_OAM_PROTECTED_RVMI:
+      - FDNT 1
+      - dnt_fw_rhrg.binding_DNT_FW_OAM_PROTECTED_RVMI
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_SERVER:
+      - FDNT 1
+      - dnt_fw_rhrg.binding_DNT_FW_SERVER
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_NIMBUS_HSL_RVMI:
+      - FDNT 1
+      - dnt_fw_rhrg.binding_DNT_FW_NIMBUS_HSL_RVMI:
+      fdnt1.dnt_fw_rsg_si_1.feature:
+      - FDNT 1
+      - dnt_fw_rsg_si_1.feature
+      allottedresourcecontrailroute1.contrailroute1.feature:
+      - Allotted resource Contrail Route 1
+      - contrailroute1.feature
+    requirements:
+      fdnt1.dnt_fw_rhrg.link_DNT_FW_INTERNET_DNS_DIRECT_RVMI:
+      - FDNT 1
+      - dnt_fw_rhrg.link_DNT_FW_INTERNET_DNS_DIRECT_RVMI
+      fdnt1.dnt_fw_rhrg.link_DNT_FW_NIMBUS_HSL_RVMI:
+      - FDNT 1
+      - dnt_fw_rhrg.link_DNT_FW_NIMBUS_HSL_RVMI
+      fdnt1.dnt_fw_rhrg.dependency:
+      - FDNT 1
+      - dnt_fw_rhrg.dependency
+      fdnt1.dnt_fw_rhrg.link_DNT_FW_OAM_PROTECTED_RVMI:
+      - FDNT 1
+      - dnt_fw_rhrg.link_DNT_FW_OAM_PROTECTED_RVMI:
+      fdnt1.dnt_fw_rhrg.link_DNT_FW_INT_DNS_TRUSTED_RVMI:
+      - FDNT 1
+      - dnt_fw_rhrg.link_DNT_FW_INT_DNS_TRUSTED_RVMI
+      fdnt1.dnt_fw_rhrg.link_DNT_FW_CORE_DIRECT_RVMI:
+      - FDNT 1
+      - dnt_fw_rhrg.link_DNT_FW_CORE_DIRECT_RVMI
+      fdnt1.dnt_fw_rsg_si_1.dependency:
+      - FDNT 1
+      - dnt_fw_rsg_si_1.dependency
+      fdnt1.dnt_fw_rhrg.local_storage_DNT_FW_SERVER:
+      - FDNT 1
+      - dnt_fw_rhrg.local_storage_DNT_FW_SERVER:
+      fdnt1.dnt_fw_rsg_si_1.port:
+      - FDNT 1
+      - dnt_fw_rsg_si_1.port
+      allottedresourcecontrailroute1.contrailroute1.service_dependency:
+      - Allotted resource Contrail Route 1
+      - contrailroute1.service_dependency
+      allottedresourcecontrailroute1.contrailroute1.dependency:
+      - Allotted resource Contrail Route 1
+      - contrailroute1.dependency
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|

@@ -1,0 +1,643 @@
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|
+tosca_definitions_version: tosca_simple_yaml_1_0
+#metadata:
+#  invariantUUID: e8edfda2-a9d2-422d-a49c-32cad3d19d5a
+#  UUID: 8eb949d6-9635-426c-9f70-7edb4c1d5cc8
+#  name: FDNT
+#  description: new VSP description
+#  type: VF
+#  category: Generic
+#  subcategory: Database
+#  resourceVendor: ciLicense2a511793
+#  resourceVendorRelease: '1.0'
+imports:
+- nodes:
+   file: nodes.yml
+- datatypes:
+   file: data.yml
+- capabilities:
+   file: capabilities.yml
+- relationships:
+   file: relationships.yml
+- groups:
+   file: groups.yml
+- policies:
+   file: policies.yml
+- FDNT-interface:
+   file: resource-Fdnt-template-interface.yml
+- SecurityRules:
+   file: resource-Securityrules-template.yml
+- Fdnt.nodes.heat.mod_vmsi_dnt_fw_child:
+   file: resource-FdntNodesHeatModVmsiDntFwChild-template.yml
+topology_template:
+  inputs:
+    nf_role: 
+      type: string
+    nf_function:
+      type: string
+    nf_naming_code:
+      type: string
+      default: nf_code
+    nf_type:
+      type: string 
+      default: FW
+    nf_naming:
+     type: org.openecomp.datatypes.Naming
+    availability_zone_max_count: 
+      type: string      
+      default: 1 
+    min_instances:
+      type: integer
+      default: 1
+    max_instances:
+      type: integer
+      default: 1
+      
+    int_fw_dns_trusted_interface_type:
+      type: string
+      default: left
+      description: service_interface_type for ServiceInstance
+    internet_dns_direct_subnet_id:
+      type: string
+      description: Subnet UUID for InstanceIp
+      default: defaultString
+    dnt_fw_srv_grp_id:
+      type: string
+      description: uuid of the server group
+      default: defaultString
+    dnt_fw_sec_grp_id:
+      type: string
+      description: uuid of the security group
+      default: defaultString
+    core_direct_subnet_id:
+      type: string
+      description: Subnet UUID for InstanceIp
+      default: defaultString
+    int_fw_dns_trusted_subnet_v6_id:
+      type: string
+      description: Subnet UUID for InstanceIp
+      default: defaultString
+    dnt_fw_si_ha_mode:
+      type: string
+      default: active-active
+      description: ha_mode for the ServiceInstance
+    core_direct_subnet_v6_id:
+      type: string
+      description: Subnet UUID for InstanceIp
+      default: defaultString
+    dnt_fw_flavor_name:
+      type: string
+      default: nv.c8r16d200
+      description: flavor for the ServiceInstance VM
+    core_direct_net_name:
+      type: string
+      default: core_direct_net_1
+      description: name for the VirtualNetwork
+    dnt_fw_st_type:
+      type: string
+      default: firewall
+      description: service_type for the ServiceTemplate
+    int_fw_dns_trusted_subnet_id:
+      type: string
+      description: Subnet UUID for InstanceIp
+      default: defaultString
+    dnt_fw_domain:
+      type: string
+      default: default-domain
+      description: domain for the ServiceTemplate
+    dnt_fw_names:
+      type: list
+      description: Comma Delimited List of Names for ServiceInstance VMs
+      entry_schema:
+        type: string
+      default: [defaultList]
+    oam_protected_interface_type:
+      type: string
+      default: management
+      description: service_interface_type for ServiceInstance
+    core_direct_net_fqdn:
+      type: string
+      description: name for the VirtualNetwork
+      default: defaultString
+    int_fw_dns_trusted_family_v6:
+      type: string
+      default: v6
+      description: IP Family Address for InstanceIp
+    dnt_fw_image_name:
+      type: string
+      default: F5_BIGIP_12.1HF1.qcow2
+      description: image_name for the ServiceInstance VM
+    dnt_fw_shc_enabled:
+      type: boolean
+      default: true
+      description: enabled for the ServiceHealthCheck
+    dnt_fw_hrg_vmsi_count_1:
+      type: float
+      description: Iteration Count of Child Template for Heat::ResourceGroup
+      default: 2.0
+    dnt_fw_st_mode:
+      type: string
+      default: in-network-nat
+      description: service_mode for the ServiceTemplate
+    dnt_fw_oam_protected_ips:
+      type: list
+      description: the ips of the management network
+      entry_schema:
+        type: string
+      default: [defaultList]
+    core_direct_interface_type:
+      type: string
+      default: other
+      description: service_interface_type for ServiceInstance
+    dnt_fw_st_version:
+      type: float
+      default: 2.0
+      description: version for the ServiceTemplate
+    vf_module_id:
+      type: string
+      description: Unique ID for this VF Module instance
+      default: defaultString
+    nimbus_hsl_interface_type:
+      type: string
+      default: other
+      description: service_interface_type for ServiceInstance
+    dnt_fw_ntp_gateway:
+      type: string
+      description: Gateway IP for NTP
+      default: defaultString
+    core_direct_family_v6:
+      type: string
+      default: v6
+      description: IP Family Address for InstanceIp
+    dnt_fw_shc_monitor_type:
+      type: string
+      default: HTTP
+      description: monitor_type for the ServiceHealthCheck
+    vnf_name:
+      type: string
+      description: Unique name for this VF instance
+      default: defaultString
+    internet_dns_direct_subnet_v6_id:
+      type: string
+      description: Subnet UUID for InstanceIp
+      default: defaultString
+    dnt_fw_st_virtualization_type:
+      type: string
+      default: virtual-machine
+      description: service_virtualization_type for the ServiceTemplate
+    internet_dns_direct_interface_type:
+      type: string
+      default: right
+      description: service_interface_type for ServiceInstance
+    dnt_fw_admin_password:
+      type: string
+      default: Juniper321!
+      description: Password used to perform image import services
+    vnf_id:
+      type: string
+      description: Unique ID for this VF instance
+      default: defaultString
+    internet_dns_direct_family_v6:
+      type: string
+      default: v6
+      description: IP Family Address for InstanceIp
+    dnt_fw_shc_url_path:
+      type: string
+      default: local-ip
+      description: url_path for the ServiceHealthCheck
+    availability_zone_0:
+      type: string
+      description: availability_zone for the ServiceInstance
+      default: defaultString
+    nimbus_hsl_net_fqdn:
+      type: string
+      description: fq_name for the VirtualNetwork
+      default: defaultString
+    nimbus_hsl_net_name:
+      type: string
+      default: nimbus_hsl_net_1
+      description: name for the VirtualNetwork
+    int_fw_dns_trusted_net_fqdn:
+      type: string
+      description: fq_name for the VirtualNetwork
+      default: defaultString
+    dnt_fw_root_password:
+      type: string
+      default: Juniper321!
+      description: Password used to perform image import services
+    dnt_fw_si_name_fqdn:
+      type: string
+      description: fq_name for the ServiceInstance in PortTuple Resource
+      default: defaultString
+    oam_protected_net_fqdn:
+      type: string
+      description: fq_name for the VirtualNetwork
+      default: defaultString
+    dnt_fw_shc_max_retries:
+      type: float
+      default: 2.0
+      description: max_retries for the ServiceHealthCheck
+    dnt_fw_shc_timeout:
+      type: float
+      default: 5.0
+      description: timeout for the ServiceHealthCheck
+    internet_dns_direct_net_fqdn:
+      type: string
+      description: fq_name for the VirtualNetwork
+      default: defaultString
+    internet_dns_direct_net_name:
+      type: string
+      default: nimbus_internet_dns_direct_net_1
+      description: name for the VirtualNetwork
+    int_fw_dns_trusted_net_name:
+      type: string
+      default: nimbus_int_fw_dns_trusted_net_1
+      description: name for the VirtualNetwork
+    dnt_fw_shc_delay:
+      type: float
+      default: 3.0
+      description: delay for the ServiceHealthCheck
+    fdnt_index:
+      type: float
+      description: index of the FDNT VM
+      default: 1.0
+    cap_map:
+      type: map
+      entry_schema: string
+      description: Input for Capabilities
+      default: 
+        aaa: bbb
+  node_templates:
+    DNT_FW_RSG_SI_1:
+      type: org.openecomp.resource.vfc.rules.nodes.heat.network.neutron.SecurityRules
+      metadata:
+        invariantUUID: a2f315f2-5965-496c-aed6-7d3a3e3b9e93
+        UUID: b709e309-c645-4177-bb54-739b2d4c3fe3
+        customizationUUID: e1d9a966-9f3c-48c6-8445-25faf6279e04
+        version: '1.0'
+        name: SecurityRules
+        description: Configuration of policy rules to be applied on ports.
+        type: VFC
+        category: Generic
+        subcategory: Rules
+      properties:
+        description: Security Group of DNT FW ServiceInstance
+
+        
+        rules:
+        - protocol: tcp
+          ethertype: IPv4
+          remote_ip_prefix: 0.0.0.0/0
+          port_range_max: 65535
+          direction: egress
+          port_range_min: 0
+        - protocol: udp
+          ethertype: IPv4
+          remote_ip_prefix: 0.0.0.0/0
+          port_range_max: 65535
+          direction: egress
+          port_range_min: 0
+        - protocol: tcp
+          ethertype: IPv4
+          remote_ip_prefix: 0.0.0.0/0
+          port_range_max: 65535
+          direction: egress
+          port_range_min: 0
+        - protocol: icmp
+          ethertype: IPv4
+          remote_ip_prefix: 0.0.0.0/0
+          direction: egress
+        - protocol: tcp
+          ethertype: IPv6
+          remote_ip_prefix: ::/0
+          port_range_max: 65535
+          direction: egress
+          port_range_min: 0
+        - protocol: udp
+          ethertype: IPv6
+          remote_ip_prefix: ::/0
+          port_range_max: 65535
+          direction: egress
+          port_range_min: 0
+        - protocol: tcp
+          ethertype: IPv6
+          remote_ip_prefix: ::/0
+          port_range_max: 65535
+          direction: egress
+          port_range_min: 0
+        - protocol: icmp
+          ethertype: IPv6
+          remote_ip_prefix: ::/0
+          direction: egress
+        - protocol: tcp
+          ethertype: IPv4
+          remote_ip_prefix: 0.0.0.0/0
+          port_range_max: 65535
+          direction: ingress
+          port_range_min: 0
+        - protocol: udp
+          ethertype: IPv4
+          remote_ip_prefix: 0.0.0.0/0
+          port_range_max: 65535
+          direction: ingress
+          port_range_min: 0
+        - protocol: tcp
+          ethertype: IPv4
+          remote_ip_prefix: 0.0.0.0/0
+          port_range_max: 65535
+          direction: ingress
+          port_range_min: 0
+        - protocol: icmp
+          ethertype: IPv4
+          remote_ip_prefix: 0.0.0.0/0
+          direction: ingress
+        - protocol: tcp
+          ethertype: IPv6
+          remote_ip_prefix: ::/0
+          port_range_max: 65535
+          direction: ingress
+          port_range_min: 0
+        - protocol: udp
+          ethertype: IPv6
+          remote_ip_prefix: ::/0
+          port_range_max: 65535
+          direction: ingress
+          port_range_min: 0
+        - protocol: tcp
+          ethertype: IPv6
+          remote_ip_prefix: ::/0
+          port_range_max: 65535
+          direction: ingress
+          port_range_min: 0
+        - protocol: icmp
+          ethertype: IPv6
+          remote_ip_prefix: ::/0
+          direction: ingress
+
+    DNT_PORT:
+      type: org.openecomp.resource.cp.nodes.heat.network.neutron.Port
+      metadata:
+        invariantUUID: 9822d334-fbea-4bf9-a95e-8392ca295bfc
+        UUID: 9a4b5b72-138b-4c7b-8ffe-fafc70d8e07a
+        customizationUUID: a419249d-47f3-4546-8320-6b23afd0d46d
+        version: '1.0'
+        name: NeutronPort
+        description: Represents a logical entity that associates between Compute and Network normative types.
+        type: CP
+        category: Generic
+        subcategory: Network Elements
+      properties:
+        network: Internal1_net            
+        network_role_tag: test
+              
+      requirements:
+      - binding:
+          #capability: tosca.capabilities.network.Bindable
+          node: DNT_FW_RHRG
+          relationship: tosca.relationships.network.BindsTo
+      capabilities:
+        xxx:
+          properties:
+            DeploymentFlavor: { get_input: cap_map }
+            distribution: rhel 
+
+    DNT_FW_RHRG:
+      type: org.openecomp.resource.vfc.Fdnt.abstract.nodes.heat.mod_vmsi_dnt_fw_child
+      metadata:
+        invariantUUID: 8a895561-a663-4b64-b421-7416bf9d4a8b
+        UUID: 795d516f-34ca-4a0e-a74b-c4746eae4300
+        customizationUUID: c788c709-f8a6-453e-ad1e-8dfa63492dbb
+        version: '1.0'
+        name: Fdnt.nodes.heat.mod_vmsi_dnt_fw_child
+        description: Not reusable inner VFC
+        type: VFC
+        category: Generic
+        subcategory: Abstract
+      properties:
+        vf_module_id:
+          get_input: vf_module_id
+        dnt_fw_ntp_gateway:
+          get_input: dnt_fw_ntp_gateway
+        nimbus_hsl_interface_type:
+          get_input: nimbus_hsl_interface_type
+        core_direct_family_v6:
+          get_input: core_direct_family_v6
+        internet_dns_direct_subnet_v6_id:
+          get_input: internet_dns_direct_subnet_v6_id
+        int_fw_dns_trusted_interface_type:
+          get_input: int_fw_dns_trusted_interface_type
+        vnf_name:
+          get_input: vnf_name
+        internet_dns_direct_subnet_id:
+          get_input: internet_dns_direct_subnet_id
+        dnt_fw_srv_grp_id:
+          get_input: dnt_fw_srv_grp_id
+        internet_dns_direct_interface_type:
+          get_input: internet_dns_direct_interface_type
+        service_template_filter:
+          substitute_service_template: mod_vmsi_dnt_fw_childServiceTemplate.yaml
+          count:
+            get_input: dnt_fw_hrg_vmsi_count_1
+          mandatory: false
+        dnt_fw_sec_grp_id:
+          get_input: dnt_fw_sec_grp_id
+        dnt_fw_admin_password:
+          get_input: dnt_fw_admin_password
+        core_direct_subnet_id:
+          get_input: core_direct_subnet_id
+        vnf_id:
+          get_input: vnf_id
+        int_fw_dns_trusted_subnet_v6_id:
+          get_input: int_fw_dns_trusted_subnet_v6_id
+        internet_dns_direct_family_v6:
+          get_input: internet_dns_direct_family_v6
+        availability_zone_0:
+          get_input: availability_zone_0
+        core_direct_subnet_v6_id:
+          get_input: core_direct_subnet_v6_id
+        nimbus_hsl_net_fqdn:
+          get_input: nimbus_hsl_net_fqdn
+        dnt_fw_flavor_name:
+          get_input: dnt_fw_flavor_name
+        core_direct_net_name:
+          get_input: core_direct_net_name
+        int_fw_dns_trusted_net_fqdn:
+          get_input: int_fw_dns_trusted_net_fqdn
+        nimbus_hsl_net_name:
+          get_input: nimbus_hsl_net_name
+        int_fw_dns_trusted_subnet_id:
+          get_input: int_fw_dns_trusted_subnet_id
+        dnt_fw_names:
+          get_input: dnt_fw_names
+        dnt_fw_root_password:
+          get_input: dnt_fw_root_password
+        dnt_fw_si_name_fqdn:
+          get_input: dnt_fw_si_name_fqdn
+        oam_protected_net_fqdn:
+          get_input: oam_protected_net_fqdn
+        oam_protected_interface_type:
+          get_input: oam_protected_interface_type
+        core_direct_net_fqdn:
+          get_input: core_direct_net_fqdn
+        int_fw_dns_trusted_family_v6:
+          get_input: int_fw_dns_trusted_family_v6
+        dnt_fw_image_name:
+          get_input: dnt_fw_image_name
+        internet_dns_direct_net_fqdn:
+          get_input: internet_dns_direct_net_fqdn
+        dnt_fw_hrg_vmsi_count_1:
+          get_input: dnt_fw_hrg_vmsi_count_1
+        dnt_fw_oam_protected_ips:
+          get_input: dnt_fw_oam_protected_ips
+        internet_dns_direct_net_name:
+          get_input: internet_dns_direct_net_name
+        core_direct_interface_type:
+          get_input: core_direct_interface_type
+        int_fw_dns_trusted_net_name:
+          get_input: int_fw_dns_trusted_net_name
+        index: 
+          get_input: fdnt_index
+        nfc_naming_code: someRole 
+        min_instances: 1
+        max_instances: 1
+        nfc_naming_code: 'code1'
+        vm_type_tag: 'tag1'
+#        vfc_naming: 
+#           ecomp_generated_naming: false
+#           instance_name: FDNT_instance_123
+  groups:
+    mod_vmsi_dnt_fw_parent_group:
+      type: org.openecomp.groups.heat.HeatStack
+      members:
+      - DNT_FW_RHRG
+#      metadata:
+#        invariantUUID: 44a80fb8-4fe1-40ab-b7a6-22edd4777417
+#        UUID: 8bcda942-5cd1-4660-9871-e0ef511b1612
+#        version: '1'
+#        name: mod_vmsi_dnt_fw_parent_group
+    DNT_FW_RAG_group:
+      type: tosca.groups.Root
+#      metadata:
+#        invariantUUID: 535467fa-276b-4a1b-9725-031edb40b3f0
+#        UUID: 2e55b1e0-a88c-4fa1-9d7d-065a15282523
+#        version: '1'
+#        name: DNT_FW_RAG_group
+    base_stsi_dnt_frwl_group:
+      type: org.openecomp.groups.heat.HeatStack
+      members:
+      - DNT_FW_RSG_SI_1
+#      metadata:
+#        invariantUUID: 5f43bba4-342b-4a99-946b-dde72596b99e
+#        UUID: a89f5316-d88d-464e-8e2d-38a08c28aaaf
+#        version: '1'
+#        name: base_stsi_dnt_frwl_group
+    Fdnt..base_stsi_dnt_frwl..module-0:
+      type: org.openecomp.groups.VfModule
+      members:
+      - DNT_FW_RSG_SI_1
+      metadata:
+         vfModuleModelName: Fdnt..base_stsi_dnt_frwl..module-0
+         vfModuleModelInvariantUUID: 6ee87d26-266f-4669-9d7d-9324802c24c9
+         vfModuleModelUUID: e99b85bc-5f07-480a-bbf0-d5880a12469e
+         vfModuleModelVersion: '1'
+      properties:
+        min_vf_module_instances: 1
+        vf_module_label: base_stsi_dnt_frwl
+        max_vf_module_instances: 1
+        vf_module_type: Base
+        vf_module_description:
+        initial_count: 1
+        volume_group: false
+    Fdnt..mod_vmsi_dnt_fw_parent..module-1:
+      type: org.openecomp.groups.VfModule
+      members:
+      - DNT_FW_RHRG
+      metadata:
+        vfModuleModelName: Fdnt..mod_vmsi_dnt_fw_parent..module-1
+        vfModuleModelInvariantUUID: 3816617b-46e4-4401-9f63-99d5eea7b3e3
+        vfModuleModelUUID: d8ccab86-4a1f-49f6-b150-9ee83a9e4ace
+        vfModuleModelVersion: '1'
+      properties:
+        min_vf_module_instances: 0
+        vf_module_label: mod_vmsi_dnt_fw_parent
+        max_vf_module_instances:
+        vf_module_type: Expansion
+        vf_module_description:
+        initial_count: 0
+        volume_group: false
+  substitution_mappings:
+    node_type: org.openecomp.resource.vf.Fdnt
+    capabilities:
+      dnt_fw_rhrg.binding_DNT_FW_INT_DNS_TRUSTED_RVMI:
+      - DNT_FW_RHRG
+      - binding_DNT_FW_INT_DNS_TRUSTED_RVMI
+      dnt_fw_rhrg.host_DNT_FW_SERVER:
+      - DNT_FW_RHRG
+      - host_DNT_FW_SERVER
+      dnt_fw_rhrg.binding_DNT_FW_CORE_DIRECT_RVMI:
+      - DNT_FW_RHRG
+      - binding_DNT_FW_CORE_DIRECT_RVMI
+      dnt_fw_rhrg.scalable_DNT_FW_SERVER:
+      - DNT_FW_RHRG
+      - scalable_DNT_FW_SERVER
+      dnt_fw_rhrg.endpoint_DNT_FW_SERVER:
+      - DNT_FW_RHRG
+      - endpoint_DNT_FW_SERVER
+      dnt_fw_rhrg.binding_DNT_FW_INTERNET_DNS_DIRECT_RVMI:
+      - DNT_FW_RHRG
+      - binding_DNT_FW_INTERNET_DNS_DIRECT_RVMI
+      dnt_fw_rhrg.os_DNT_FW_SERVER:
+      - DNT_FW_RHRG
+      - os_DNT_FW_SERVER
+      dnt_fw_rhrg.feature:
+      - DNT_FW_RHRG
+      - feature
+      dnt_fw_rhrg.binding_DNT_FW_OAM_PROTECTED_RVMI:
+      - DNT_FW_RHRG
+      - binding_DNT_FW_OAM_PROTECTED_RVMI
+      dnt_fw_rhrg.binding_DNT_FW_SERVER:
+      - DNT_FW_RHRG
+      - binding_DNT_FW_SERVER
+      dnt_fw_rhrg.binding_DNT_FW_NIMBUS_HSL_RVMI:
+      - DNT_FW_RHRG
+      - binding_DNT_FW_NIMBUS_HSL_RVMI
+      dnt_fw_rsg_si_1.feature:
+      - DNT_FW_RSG_SI_1
+      - feature
+    requirements:
+      dnt_fw_rhrg.link_DNT_FW_INTERNET_DNS_DIRECT_RVMI:
+      - DNT_FW_RHRG
+      - link_DNT_FW_INTERNET_DNS_DIRECT_RVMI
+      dnt_fw_rhrg.link_DNT_FW_NIMBUS_HSL_RVMI:
+      - DNT_FW_RHRG
+      - link_DNT_FW_NIMBUS_HSL_RVMI
+      dnt_fw_rhrg.dependency:
+      - DNT_FW_RHRG
+      - dependency
+      dnt_fw_rhrg.link_DNT_FW_OAM_PROTECTED_RVMI:
+      - DNT_FW_RHRG
+      - link_DNT_FW_OAM_PROTECTED_RVMI
+      dnt_fw_rhrg.link_DNT_FW_INT_DNS_TRUSTED_RVMI:
+      - DNT_FW_RHRG
+      - link_DNT_FW_INT_DNS_TRUSTED_RVMI
+      dnt_fw_rhrg.link_DNT_FW_CORE_DIRECT_RVMI:
+      - DNT_FW_RHRG
+      - link_DNT_FW_CORE_DIRECT_RVMI
+      dnt_fw_rsg_si_1.dependency:
+      - DNT_FW_RSG_SI_1
+      - dependency
+      dnt_fw_rhrg.local_storage_DNT_FW_SERVER:
+      - DNT_FW_RHRG
+      - local_storage_DNT_FW_SERVER
+      dnt_fw_rsg_si_1.port:
+      - DNT_FW_RSG_SI_1
+      - port
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|

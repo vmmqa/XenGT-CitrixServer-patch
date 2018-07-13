@@ -1,0 +1,241 @@
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+imports:
+- datatypes:
+   file: data.yml
+
+node_types:
+  org.openecomp.service.ServiceFdnt:
+    derived_from: tosca.nodes.Root
+#    properties:
+#      service_naming:
+#        description: service naming
+#        type: org.openecomp.datatypes.Naming
+#        status: supported
+#        default: false
+#        required: false
+    capabilities:
+      fdnt1.dnt_fw_rhrg.feature:
+        type: tosca.capabilities.Node
+        occurrences:
+        - 1
+        - UNBOUNDED
+      fdnt1.dnt_fw_rhrg.scalable_DNT_FW_SERVER:
+        type: tosca.capabilities.Scalable
+        occurrences:
+        - 1
+        - UNBOUNDED
+        properties:
+          max_instances:
+            type: integer
+            default: 1
+          min_instances:
+            type: integer
+            default: 1
+          default_instances:
+            type: integer
+          limit: 100
+      fdnt1.dnt_fw_rhrg.host_DNT_FW_SERVER:
+        type: tosca.capabilities.Container
+        occurrences:
+        - 1
+        - UNBOUNDED
+        valid_source_types:
+        - tosca.nodes.SoftwareComponent
+        properties:
+          num_cpus:
+            type: integer
+            required: false
+          disk_size:
+            type: scalar-unit.size
+            required: false
+          cpu_frequency:
+            type: scalar-unit.frequency
+            required: false
+          mem_size:
+            type: scalar-unit.size
+            required: false
+      fdnt1.dnt_fw_rhrg.endpoint_DNT_FW_SERVER:
+        type: tosca.capabilities.Endpoint.Admin
+        occurrences:
+        - 1
+        - UNBOUNDED
+        properties:
+          port_name:
+            type: string
+            required: false
+          protocol:
+            type: string
+            default: tcp
+          port:
+            type: PortDef
+            required: false
+          initiator:
+            type: string
+            default: source
+          network_name:
+            type: string
+            default: PRIVATE
+            required: false
+          secure:
+            type: boolean
+            default: true
+          ports:
+            type: map
+            required: false
+            entry_schema:
+              type: PortSpec
+          url_path:
+            type: string
+            required: false
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_CORE_DIRECT_RVMI:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 0
+        - UNBOUNDED
+        valid_source_types:
+        - org.openecomp.resource.cp.nodes.heat.network.contrailV2.VLANSubInterface
+      fdnt1.dnt_fw_rhrg.os_DNT_FW_SERVER:
+        type: tosca.capabilities.OperatingSystem
+        occurrences:
+        - 1
+        - UNBOUNDED
+        properties:
+          type:
+            type: string
+            required: false
+          distribution:
+            type: string
+            required: false
+          version:
+            type: version
+            required: false
+          architecture:
+            type: string
+            required: false
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_OAM_PROTECTED_RVMI:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 0
+        - UNBOUNDED
+        valid_source_types:
+        - org.openecomp.resource.cp.nodes.heat.network.contrailV2.VLANSubInterface
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_SERVER:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 1
+        - UNBOUNDED
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_INT_DNS_TRUSTED_RVMI:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 0
+        - UNBOUNDED
+        valid_source_types:
+        - org.openecomp.resource.cp.nodes.heat.network.contrailV2.VLANSubInterface
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_INTERNET_DNS_DIRECT_RVMI:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 0
+        - UNBOUNDED
+        valid_source_types:
+        - org.openecomp.resource.cp.nodes.heat.network.contrailV2.VLANSubInterface
+      fdnt1.dnt_fw_rhrg.binding_DNT_FW_NIMBUS_HSL_RVMI:
+        type: tosca.capabilities.network.Bindable
+        occurrences:
+        - 0
+        - UNBOUNDED
+        valid_source_types:
+        - org.openecomp.resource.cp.nodes.heat.network.contrailV2.VLANSubInterface
+      allottedresourcecontrailroute1.contrailroute1.feature:
+        type: tosca.capabilities.Node
+        occurrences:
+        - 1
+        - UNBOUNDED
+    requirements:
+    - fdnt1.dnt_fw_rhrg.dependency:
+        occurrences:
+        - 0
+        - UNBOUNDED
+        capability: tosca.capabilities.Node
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.DependsOn
+    - fdnt1.dnt_fw_rsg_si_1.dependency:
+        occurrences:
+        - 0
+        - UNBOUNDED
+        capability: tosca.capabilities.Node
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.DependsOn
+    - fdnt1.dnt_fw_rhrg.link_DNT_FW_INTERNET_DNS_DIRECT_RVMI:
+        occurrences:
+        - 1
+        - 1
+        capability: tosca.capabilities.network.Linkable
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.network.LinksTo
+    - fdnt1.dnt_fw_rhrg.link_DNT_FW_CORE_DIRECT_RVMI:
+        occurrences:
+        - 1
+        - 1
+        capability: tosca.capabilities.network.Linkable
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.network.LinksTo
+    - fdnt1.dnt_fw_rhrg.link_DNT_FW_OAM_PROTECTED_RVMI:
+        occurrences:
+        - 1
+        - 1
+        capability: tosca.capabilities.network.Linkable
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.network.LinksTo
+    - fdnt1.dnt_fw_rhrg.link_DNT_FW_INT_DNS_TRUSTED_RVMI:
+        occurrences:
+        - 1
+        - 1
+        capability: tosca.capabilities.network.Linkable
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.network.LinksTo
+    - fdnt1.dnt_fw_rhrg.link_DNT_FW_NIMBUS_HSL_RVMI:
+        occurrences:
+        - 1
+        - 1
+        capability: tosca.capabilities.network.Linkable
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.network.LinksTo
+    - fdnt1.dnt_fw_rsg_si_1.port:
+        occurrences:
+        - 0
+        - UNBOUNDED
+        capability: tosca.capabilities.Attachment
+        node: org.openecomp.resource.cp.nodes.heat.network.neutron.Port
+        relationship: org.openecomp.relationships.AttachesTo
+    - fdnt1.dnt_fw_rhrg.local_storage_DNT_FW_SERVER:
+        occurrences:
+        - 0
+        - UNBOUNDED
+        capability: tosca.capabilities.Attachment
+        node: tosca.nodes.BlockStorage
+        relationship: tosca.relationships.AttachesTo
+    - allottedresourcecontrailroute1.contrailroute1.dependency:
+        occurrences:
+        - 0
+        - UNBOUNDED
+        capability: tosca.capabilities.Node
+        node: tosca.nodes.Root
+        relationship: tosca.relationships.DependsOn
+    - allottedresourcecontrailroute1.contrailroute1.service_dependency:
+        occurrences:
+        - 1
+        - 1
+        capability: org.openecomp.capabilities.AllottedResource
+        node: tosca.services.Root
+        relationship: tosca.relationships.DependsOn
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|

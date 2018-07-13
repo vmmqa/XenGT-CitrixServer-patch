@@ -1,0 +1,72 @@
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|
+tosca_definitions_version: tosca_simple_yaml_1_0
+# metadata:
+#   invariantUUID: 9c9a8369-9e89-431b-9e73-9d483b2cf7e4
+#   UUID: 8d2e734d-882e-4998-9c8b-413e2b9d1241
+#   name: Allotted resource
+#   description: Allotted resource
+#   type: VFC
+#   category: Allotted Resource
+#   subcategory: Allotted Resource
+#   resourceVendor: '1'
+#   resourceVendorRelease: '1'
+
+imports:
+- nodes:
+   file: nodes.yml
+- datatypes:
+   file: data.yml
+- capabilities:
+   file: capabilities.yml
+- relationships:
+   file: relationships.yml
+- groups:
+   file: groups.yml
+- policies:
+   file: policies.yml
+node_types:
+  org.openecomp.resource.vfc.AllottedResource:
+    derived_from: tosca.nodes.Root
+    description: Allotted resource
+    properties:
+      target_network_role:
+        type: string
+        description: Role matches up with in the target network
+      providing_service_invariant_uuid:
+        type: string
+        description: The providing service invariant uuid in order to map the allotted resource to the specific service version
+      role:
+        type: string
+        description: Unique label that defines the role that this allotted resource performs
+      providing_service_uuid:
+        type: string
+        description: The providing service uuid in order to map the allotted resource to the specific service version
+      ecomp_naming:
+        type: org.openecomp.datatypes.Naming
+      providing_service_name:
+        type: string
+        description: The providing service name in order to map the allotted resource to the specific service version
+      min_instances:
+        type: integer
+        default: 1
+      max_instances:
+        type: integer
+        default: 1
+      
+    requirements:
+    - service_dependency:
+        occurrences:
+        - 1
+        - 1
+        capability: org.openecomp.capabilities.AllottedResource
+        node: tosca.services.Root
+        relationship: tosca.relationships.DependsOn
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|

@@ -1,0 +1,119 @@
+ #_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|
+tosca_definitions_version: tosca_simple_yaml_1_0
+# metadata:
+#   invariantUUID: 6bcdf160-591e-4070-ae17-dad62d978159
+#   UUID: a0b1ceae-c6f1-4340-9deb-925c299f138b
+#   name: Contrail Route
+#   description: Contrail Route
+#   type: VF
+#   category: Allotted Resource
+#   subcategory: Contrail Route
+#   resourceVendor: '1'
+#   resourceVendorRelease: '1'
+imports:
+- nodes:
+   file: nodes.yml
+- datatypes:
+   file: data.yml
+- capabilities:
+   file: capabilities.yml
+- relationships:
+   file: relationships.yml
+- groups:
+   file: groups.yml
+- policies:
+   file: policies.yml
+- Contrail Route-interface:
+    file: resource-ContrailRoute-template-interface.yml
+- Allotted resource:
+    file: resource-AllottedResource-template.yml
+
+topology_template:
+  inputs:
+      providing_service_invariant_uuid:
+         type: string
+         default: '123456454'
+      providing_service_uuid: 
+         type: string
+         default: '456476'
+      providing_service_name: 
+         type: string
+         default: '12412414' 
+      target_network_role:
+         type: string
+         default: '123'
+      nf_type: 
+         type: string
+         default: '123'
+      nf_function:
+         type: string 
+         default: '123'
+      nf_role:
+         type: string
+         default: '123'
+      nf_naming_code:
+         type: string
+         default: '123'
+#      vnf_naming:
+#         type: org.openecomp.datatypes.Naming
+      availability_zone_max_count:
+         type: string
+         default: '123'
+      min_instances:
+         type: integer
+         default: 1
+      max_instances:
+         type: integer
+         default: 1
+         
+  node_templates:
+    Contrail Route 1:
+      type: org.openecomp.resource.vfc.AllottedResource
+      metadata:
+        invariantUUID: 9c9a8369-9e89-431b-9e73-9d483b2cf7e4
+        UUID: 8d2e734d-882e-4998-9c8b-413e2b9d1241
+        customizationUUID: 3794aacd-6535-41c8-af1c-02e300ccf50b
+        version: '0.1'
+        name: Allotted resource
+        description: Allotted resource
+        type: VFC
+        category: Allotted Resource
+        subcategory: Tunnel XConnect
+      properties:
+        min_instances: 1
+        max_instances: 1
+        providing_service_uuid: 
+          get input: providing_service_uuid
+        providing_service_name: 
+          get input: providing_service_name
+        target_network_role:
+          get input: target_network_role    
+        providing_service_invariant_uuid: 
+          get input: providing_service_invariant_uuid
+        role: 'some_role'
+        ecomp_naming:
+          ecomp_generated_naming: true
+          naming_policy: contrail_route
+
+  substitution_mappings:
+    node_type: org.openecomp.resource.vf.ContrailRoute
+    capabilities:
+      contrailroute1.feature:
+      - Contrail Route 1
+      - feature
+    requirements:
+      contrailroute1.service_dependency:
+      - Contrail Route 1
+      - service_dependency
+      contrailroute1.dependency:
+      - Contrail Route 1
+      - dependency
+#_______________________________________________________________________________________________________________________________________
+ #|                                    					    AT&T Proprietary (Restricted)           									 |
+ #|                                     Only for use by authorized individuals or any above-designated team(s)                            |
+ #|                                          within the AT&T companies and not for general distribution      							 |
+ #|_______________________________________________________________________________________________________________________________________|
