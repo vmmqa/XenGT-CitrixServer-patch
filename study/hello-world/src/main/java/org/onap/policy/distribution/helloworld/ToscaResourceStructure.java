@@ -34,11 +34,13 @@ import org.onap.sdc.tosca.parser.api.ISdcCsarHelper;
 import org.onap.sdc.tosca.parser.impl.SdcCsarHelperImpl;
 import org.onap.sdc.tosca.parser.impl.SdcPropertyNames;
 import org.onap.sdc.tosca.parser.impl.SdcToscaParserFactory;
-
 import org.onap.sdc.toscaparser.api.NodeTemplate;
 import org.onap.sdc.toscaparser.api.elements.Metadata;
 
 import org.onap.policy.distribution.helloworld.exceptions.ASDCDownloadException;
+import org.onap.policy.common.logging.flexlogger.FlexLogger;
+import org.onap.policy.common.logging.flexlogger.Logger;
+
 
 public class ToscaResourceStructure {
 	
@@ -54,7 +56,7 @@ public class ToscaResourceStructure {
 	
 	
 	private IArtifactInfo toscaArtifact;
-	
+	private static Logger logger = FlexLogger.getLogger(ToscaResourceStructure.class);
 	
 	public ToscaResourceStructure(){
 	}
@@ -65,15 +67,17 @@ public class ToscaResourceStructure {
 		try {
 				
 			SdcToscaParserFactory factory = SdcToscaParserFactory.getInstance();//Autoclosable
+            logger.debug("policy config path is: " + System.getProperty("policy.config.path"));
 			
 			
-			File spoolFile = new File(System.getProperty("mso.config.path") + "ASDC/" + artifact.getArtifactName());
+			File spoolFile = new File(System.getProperty("policy.config.path") + "ASDC/" + artifact.getArtifactName());
  
-
+            logger.debug("ASDC File path is: " + spoolFile.getAbsolutePath());
 			sdcCsarHelper = factory.getSdcCsarHelper(spoolFile.getAbsolutePath());
 
 		}catch(Exception e){
 			System.out.println("System out " + e.getMessage());
+            logger.error("Exception caught during parser *****LOOK********* " + artifact.getArtifactName()+"ASDC processResourceNotification Exception in processResourceNotification", e);
 			throw new ASDCDownloadException ("Exception caught when passing the csar file to the parser ", e);
 		}	
 
