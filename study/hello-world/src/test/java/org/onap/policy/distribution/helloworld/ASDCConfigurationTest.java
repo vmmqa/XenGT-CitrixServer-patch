@@ -31,32 +31,38 @@ import java.util.Properties;
 import org.eclipse.jetty.util.security.Password;
 import org.junit.Test;
 import org.onap.sdc.utils.ArtifactTypeEnum;
+import org.onap.policy.common.logging.flexlogger.FlexLogger;
+import org.onap.policy.common.logging.flexlogger.Logger;
+
 
 /**
  * Tests for ASDCConfiguration class
  *
  */
 public class ASDCConfigurationTest {
-
+    private static Logger logger = FlexLogger.getLogger(ASDCConfigurationTest.class);
+    
     @Test
     public void testYangModelArtifactType() {
+        logger.debug("tearDown: enter");
         Properties props = new Properties();
         props.setProperty("ml.distribution.ARTIFACT_TYPES", "MODEL_INVENTORY_PROFILE,MODEL_QUERY_SPEC,VNF_CATALOG");
         ASDCConfiguration config = new ASDCConfiguration(props, null);
 
         List<String> types = config.getRelevantArtifactTypes();
 
-        System.out.println("ArtifactType: " + types.get(0));
+        logger.debug("ArtifactType: " + types.get(0));
         assertEquals(0, types.get(0).compareToIgnoreCase(ArtifactTypeEnum.MODEL_INVENTORY_PROFILE.toString()));
 
-        System.out.println("ArtifactType: " + types.get(1));
+        logger.debug("ArtifactType: " + types.get(1));
         assertEquals(0, types.get(1).compareToIgnoreCase(ArtifactTypeEnum.MODEL_QUERY_SPEC.toString()));
 
-        System.out.println("ArtifactType: " + types.get(2));
+        logger.debug("ArtifactType: " + types.get(2));
         assertEquals(0, types.get(2).compareToIgnoreCase(ArtifactTypeEnum.VNF_CATALOG.toString()));
 
-        System.out.println("size= " + types.size());
+        logger.debug("size= " + types.size());
         assertEquals(3, types.size());
+        logger.debug("tearDown: end");
     }
 
     @Test
