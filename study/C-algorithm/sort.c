@@ -144,11 +144,61 @@ static void mergesort(int *a, int left,int right)
 	return;
 }
 
+static void mergecpy2(int *p, int left, int middle, int right){
+    printf("leverage func %s, left=%d, middle=%d, right=%d\n",__func__,left,middle, right);
+    int *p1=(int*)malloc((right-left+1)*sizeof(int));
+    
+    int a=left;
+    int b=middle+1;
+    int i=0;
+    while((a<=middle) && (b<=right)){
+        if(p[a] <= p[b]){
+            p1[i++]=p[a++];
+        }else{
+            p1[i++]=p[b++];
+        }
+        
+    }
+
+    int start=a;
+    int end=middle;
+    if(a>middle){
+        start =b;
+        end=right;
+    }
+
+    while(start<=end){
+        p1[i++]=p[start++];
+    }
+
+    for(i=0;i<right-left+1;i++){
+        p[left+i]=p1[i];
+    }
+    free(p1);
+}
+
+static void mergesort2(int *p, int left, int right){
+	printf("leverage func %s\n",__func__);
+    if(left>=right) 
+        return;
+
+    int middle = left + (right-left)/2;
+    mergesort2(p, left, middle);
+    mergesort2(p,middle+1,right);
+
+    mergecpy2(p,left,middle,right);
+    return;
+}
+
+
+
+
 static void merge_sort(int *p, int size){
 	printf("leverage func %s, size=%d\n",__func__,size);
-	mergesort(p,0,size-1);
+	mergesort2(p,0,size-1);
 	return ;
 }
+
 static void quicksort2(int *a, int low,int high)
 {
 	printf("leverage func %s, left=%d,right=%d\n",__func__,low,high);
