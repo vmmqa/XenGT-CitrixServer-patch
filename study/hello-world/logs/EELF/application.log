@@ -1,0 +1,9 @@
+2018-07-20 01:09:26,754|||main||||INFO||||||| EELF0005I Searching path "${user.home};etc;../etc" for log configuration file "logback-test.xml"
+2018-07-20 01:09:26,755|||main||||INFO||||||| EELF0001I Loading default logging configuration from system resource file "com/att/eelf/logback.xml"
+2018-07-20 01:09:27,045|||main||||INFO|||||org.onap.policy.distribution.helloworld.ASDCConfigurationTest|| Reflections took 6 ms to scan 1 urls, producing 4 keys and 4 values 
+2018-07-20 01:09:27,160|||main||||INFO|||||org.onap.policy.distribution.helloworld.ASDCConfigurationTest|| Reflections took 0 ms to scan 1 urls, producing 4 keys and 4 values 
+2018-07-20 01:09:27,725|||main||||WARN|||||org.onap.policy.distribution.helloworld.ASDCConfigurationTest|| ####################################################################################################
+2018-07-20 01:09:27,726|||main||||WARN|||||org.onap.policy.distribution.helloworld.ASDCConfigurationTest|| CSAR Warnings found! CSAR name - /home/sky-nuc-libo1/repos/XenGT-CitrixServer-patch/study/hello-world/src/test/resources/ASDC/service-sunny-flow.csar
+2018-07-20 01:09:27,728|||main||||WARN|||||org.onap.policy.distribution.helloworld.ASDCConfigurationTest|| ToscaTemplate - verifyTemplate - 1 Parsing Warning occurred...
+2018-07-20 01:09:27,728|||main||||WARN|||||org.onap.policy.distribution.helloworld.ASDCConfigurationTest|| JTosca Exception [JE003]: MissingRequiredFieldError: properties of template "DNT_FW_RSG_SI_1" are missing field(s): [name]. CSAR name - /home/sky-nuc-libo1/repos/XenGT-CitrixServer-patch/study/hello-world/src/test/resources/ASDC/service-sunny-flow.csar
+2018-07-20 01:09:27,729|||main||||WARN|||||org.onap.policy.distribution.helloworld.ASDCConfigurationTest|| ####################################################################################################

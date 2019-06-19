@@ -1,0 +1,118 @@
+2018-07-20 01:09:26,758|| timerDelayTime value: 1000
+2018-07-20 01:09:26,758|| checkInterval value: 30000
+2018-07-20 01:09:26,759|| expiredDate value: 86400
+2018-07-20 01:09:26,759|| concurrentHashMapLimit value: 5000
+2018-07-20 01:09:26,759|| loggerType value: EELF
+2018-07-20 01:09:26,759|| debugLogger level: INFO
+2018-07-20 01:09:26,759|| component: DROOLS
+2018-07-20 01:09:26,782|| POLICY-500I INFO: *********************** Rule audit id: POLICY-507I
+2018-07-20 01:09:26,782|| POLICY-500I INFO: *********************** Rule audit value: Service Name: {0}:Executing rule: {1}
+2018-07-20 01:09:26,782|| POLICY-500I INFO: tearDown: enter
+2018-07-20 01:09:26,783|| POLICY-500I INFO: ArtifactType: MODEL_INVENTORY_PROFILE
+2018-07-20 01:09:26,783|| POLICY-500I INFO: ArtifactType: MODEL_QUERY_SPEC
+2018-07-20 01:09:26,784|| POLICY-500I INFO: ArtifactType: VNF_CATALOG
+2018-07-20 01:09:26,784|| POLICY-500I INFO: size= 3
+2018-07-20 01:09:26,784|| POLICY-500I INFO: tearDown: end
+2018-07-20 01:09:27,729|| POLICY-500I INFO: the information of Metadata =Metadata{metadataMap={invariantUUID=78c72999-1003-4a35-8534-bbd7d96fcae3, UUID=edd0a9f7-d084-4423-8461-a2eff4cb3eb6, name=Service FDNT, description=Service FDNT, type=Service, category=Network L1-3, ecompGeneratedNaming=true, namingPolicy=test, serviceEcompNaming=true}}
+2018-07-20 01:09:27,730|| POLICY-500I INFO: the size of Input=1
+2018-07-20 01:09:27,730|| POLICY-500I INFO: name=service_naming,type=string,requried=false,getDescription=service naming
+2018-07-20 01:09:27,731|| POLICY-500I INFO: size=1,the meta name=Contrail Route
+2018-07-20 01:09:27,737|| POLICY-500I INFO: size=2,the meta name=FDNT
+2018-07-20 01:09:27,739|| POLICY-500I INFO: name=Allotted resource Contrail Route 1,the meta name=Contrail Route
+2018-07-20 01:09:27,740|| POLICY-500I INFO: the size of allList=3
+2018-07-20 01:09:27,740|| POLICY-500I INFO: name=FDNT 1
+2018-07-20 01:09:27,741|| POLICY-500I INFO: MedtaData=Metadata{metadataMap={invariantUUID=e8edfda2-a9d2-422d-a49c-32cad3d19d5a, UUID=8eb949d6-9635-426c-9f70-7edb4c1d5cc8, customizationUUID=56179cd8-de4a-4c38-919b-bbc4452d2d73, version=1.0, name=FDNT, description=new VSP description, type=VF, resourceVendor=ciLicense2a511793, resourceVendorRelease=1.0, category=Generic, subcategory=Database}}
+2018-07-20 01:09:27,741|| POLICY-500I INFO: type=org.openecomp.resource.vf.Fdnt
+2018-07-20 01:09:27,741|| POLICY-500I INFO: size of properties=59
+2018-07-20 01:09:27,741|| POLICY-500I INFO: property=nf_naming
+2018-07-20 01:09:27,742|| POLICY-500I INFO: property=nf_type
+2018-07-20 01:09:27,742|| POLICY-500I INFO: property=nf_role
+2018-07-20 01:09:27,742|| POLICY-500I INFO: property=nf_function
+2018-07-20 01:09:27,742|| POLICY-500I INFO: property=nf_naming_code
+2018-07-20 01:09:27,742|| POLICY-500I INFO: property=availability_zone_max_count
+2018-07-20 01:09:27,743|| POLICY-500I INFO: property=min_instances
+2018-07-20 01:09:27,743|| POLICY-500I INFO: property=max_instances
+2018-07-20 01:09:27,743|| POLICY-500I INFO: property=int_fw_dns_trusted_interface_type
+2018-07-20 01:09:27,743|| POLICY-500I INFO: property=internet_dns_direct_subnet_id
+2018-07-20 01:09:27,744|| POLICY-500I INFO: property=dnt_fw_srv_grp_id
+2018-07-20 01:09:27,744|| POLICY-500I INFO: property=dnt_fw_sec_grp_id
+2018-07-20 01:09:27,744|| POLICY-500I INFO: property=core_direct_subnet_id
+2018-07-20 01:09:27,744|| POLICY-500I INFO: property=int_fw_dns_trusted_subnet_v6_id
+2018-07-20 01:09:27,744|| POLICY-500I INFO: property=dnt_fw_si_ha_mode
+2018-07-20 01:09:27,745|| POLICY-500I INFO: property=core_direct_subnet_v6_id
+2018-07-20 01:09:27,745|| POLICY-500I INFO: property=dnt_fw_flavor_name
+2018-07-20 01:09:27,745|| POLICY-500I INFO: property=core_direct_net_name
+2018-07-20 01:09:27,745|| POLICY-500I INFO: property=dnt_fw_st_type
+2018-07-20 01:09:27,745|| POLICY-500I INFO: property=int_fw_dns_trusted_subnet_id
+2018-07-20 01:09:27,746|| POLICY-500I INFO: property=dnt_fw_domain
+2018-07-20 01:09:27,746|| POLICY-500I INFO: property=dnt_fw_names
+2018-07-20 01:09:27,746|| POLICY-500I INFO: property=oam_protected_interface_type
+2018-07-20 01:09:27,746|| POLICY-500I INFO: property=core_direct_net_fqdn
+2018-07-20 01:09:27,746|| POLICY-500I INFO: property=int_fw_dns_trusted_family_v6
+2018-07-20 01:09:27,747|| POLICY-500I INFO: property=dnt_fw_image_name
+2018-07-20 01:09:27,747|| POLICY-500I INFO: property=dnt_fw_shc_enabled
+2018-07-20 01:09:27,747|| POLICY-500I INFO: property=dnt_fw_hrg_vmsi_count_1
+2018-07-20 01:09:27,747|| POLICY-500I INFO: property=dnt_fw_st_mode
+2018-07-20 01:09:27,747|| POLICY-500I INFO: property=dnt_fw_oam_protected_ips
+2018-07-20 01:09:27,748|| POLICY-500I INFO: property=core_direct_interface_type
+2018-07-20 01:09:27,748|| POLICY-500I INFO: property=dnt_fw_st_version
+2018-07-20 01:09:27,748|| POLICY-500I INFO: property=vf_module_id
+2018-07-20 01:09:27,748|| POLICY-500I INFO: property=nimbus_hsl_interface_type
+2018-07-20 01:09:27,748|| POLICY-500I INFO: property=dnt_fw_ntp_gateway
+2018-07-20 01:09:27,748|| POLICY-500I INFO: property=core_direct_family_v6
+2018-07-20 01:09:27,749|| POLICY-500I INFO: property=dnt_fw_shc_monitor_type
+2018-07-20 01:09:27,749|| POLICY-500I INFO: property=vnf_name
+2018-07-20 01:09:27,749|| POLICY-500I INFO: property=internet_dns_direct_subnet_v6_id
+2018-07-20 01:09:27,749|| POLICY-500I INFO: property=dnt_fw_st_virtualization_type
+2018-07-20 01:09:27,749|| POLICY-500I INFO: property=internet_dns_direct_interface_type
+2018-07-20 01:09:27,750|| POLICY-500I INFO: property=dnt_fw_admin_password
+2018-07-20 01:09:27,750|| POLICY-500I INFO: property=vnf_id
+2018-07-20 01:09:27,750|| POLICY-500I INFO: property=internet_dns_direct_family_v6
+2018-07-20 01:09:27,750|| POLICY-500I INFO: property=dnt_fw_shc_url_path
+2018-07-20 01:09:27,750|| POLICY-500I INFO: property=availability_zone_0
+2018-07-20 01:09:27,751|| POLICY-500I INFO: property=nimbus_hsl_net_fqdn
+2018-07-20 01:09:27,751|| POLICY-500I INFO: property=nimbus_hsl_net_name
+2018-07-20 01:09:27,751|| POLICY-500I INFO: property=int_fw_dns_trusted_net_fqdn
+2018-07-20 01:09:27,751|| POLICY-500I INFO: property=dnt_fw_root_password
+2018-07-20 01:09:27,751|| POLICY-500I INFO: property=dnt_fw_si_name_fqdn
+2018-07-20 01:09:27,751|| POLICY-500I INFO: property=oam_protected_net_fqdn
+2018-07-20 01:09:27,752|| POLICY-500I INFO: property=dnt_fw_shc_max_retries
+2018-07-20 01:09:27,752|| POLICY-500I INFO: property=dnt_fw_shc_timeout
+2018-07-20 01:09:27,752|| POLICY-500I INFO: property=internet_dns_direct_net_fqdn
+2018-07-20 01:09:27,752|| POLICY-500I INFO: property=internet_dns_direct_net_name
+2018-07-20 01:09:27,753|| POLICY-500I INFO: property=int_fw_dns_trusted_net_name
+2018-07-20 01:09:27,753|| POLICY-500I INFO: property=dnt_fw_shc_delay
+2018-07-20 01:09:27,753|| POLICY-500I INFO: property=fdnt_index
+2018-07-20 01:09:27,753|| POLICY-500I INFO: name=Allotted resource Contrail Route 1
+2018-07-20 01:09:27,754|| POLICY-500I INFO: MedtaData=Metadata{metadataMap={invariantUUID=6bcdf160-591e-4070-ae17-dad62d978159, UUID=a0b1ceae-c6f1-4340-9deb-925c299f138b, customizationUUID=fba0b775-469e-4f21-9b3f-46ad322b89db, version=0.4, name=Contrail Route, description=Contrail Route, type=VF, category=Allotted Resource, subcategory=Contrail Route}}
+2018-07-20 01:09:27,754|| POLICY-500I INFO: type=org.openecomp.resource.vf.ContrailRoute
+2018-07-20 01:09:27,754|| POLICY-500I INFO: size of properties=11
+2018-07-20 01:09:27,754|| POLICY-500I INFO: property=providing_service_invariant_uuid
+2018-07-20 01:09:27,754|| POLICY-500I INFO: property=providing_service_uuid
+2018-07-20 01:09:27,754|| POLICY-500I INFO: property=providing_service_name
+2018-07-20 01:09:27,755|| POLICY-500I INFO: property=target_network_role
+2018-07-20 01:09:27,755|| POLICY-500I INFO: property=nf_type
+2018-07-20 01:09:27,755|| POLICY-500I INFO: property=nf_role
+2018-07-20 01:09:27,755|| POLICY-500I INFO: property=nf_naming_code
+2018-07-20 01:09:27,755|| POLICY-500I INFO: property=availability_zone_max_count
+2018-07-20 01:09:27,756|| POLICY-500I INFO: property=min_instances
+2018-07-20 01:09:27,756|| POLICY-500I INFO: property=max_instances
+2018-07-20 01:09:27,756|| POLICY-500I INFO: property=nf_function
+2018-07-20 01:09:27,756|| POLICY-500I INFO: name=exVL
+2018-07-20 01:09:27,756|| POLICY-500I INFO: MedtaData=Metadata{metadataMap={invariantUUID=e8edfda2-a9d2-422d-a49c-32cad3d19d5b, UUID=8eb949d6-9635-426c-9f70-7edb4c1d5ccb, customizationUUID=56179cd8-de4a-4c38-919b-bbc4452d2d7b, version=1.0, name=ExtVL, description=ECOMP generic virtual link (network) base type for all other service-level and global networks, type=VL, resourceVendor=ciLicense2a511793, resourceVendorRelease=1.0, category=Generic, subcategory=Network Elements}}
+2018-07-20 01:09:27,757|| POLICY-500I INFO: type=org.openecomp.resource.vl.extVL
+2018-07-20 01:09:27,757|| POLICY-500I INFO: size of properties=9
+2018-07-20 01:09:27,757|| POLICY-500I INFO: property=network_role
+2018-07-20 01:09:27,757|| POLICY-500I INFO: property=network_assignments
+2018-07-20 01:09:27,757|| POLICY-500I INFO: property=network_flows
+2018-07-20 01:09:27,757|| POLICY-500I INFO: property=network_scope
+2018-07-20 01:09:27,758|| POLICY-500I INFO: property=network_type
+2018-07-20 01:09:27,758|| POLICY-500I INFO: property=provider_network
+2018-07-20 01:09:27,758|| POLICY-500I INFO: property=network_technology
+2018-07-20 01:09:27,758|| POLICY-500I INFO: property=ip_version
+2018-07-20 01:09:27,758|| POLICY-500I INFO: property=dhcp_enabled
+2018-07-20 01:09:27,759|| POLICY-500I INFO: the network_role=ServiceFdnt.OAMthe use_ipv4=true
+2018-07-20 01:09:27,760|| POLICY-500I INFO: the content =CapabilityAssignment{name='DNT_FW_RHRG.binding_DNT_FW_INT_DNS_TRUSTED_RVMI', _properties={}, _definition=org.onap.sdc.toscaparser.api.elements.CapabilityTypeDef@25d8bc41}
+2018-07-20 01:09:27,761|| POLICY-500I INFO: the content=org.onap.sdc.toscaparser.api.RequirementAssignment@25ec11fb
+2018-07-20 01:09:27,761|| POLICY-500I INFO: the name of requirement=binding,the nodeName=DNT_FW_RHRG
+2018-07-20 01:09:27,761|| POLICY-500I INFO: the name of capabilityName=null,the relationship=tosca.relationships.network.BindsTo
